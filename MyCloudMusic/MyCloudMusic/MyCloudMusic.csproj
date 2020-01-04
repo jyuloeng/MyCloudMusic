@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{D763A84A-F016-4DCA-84B9-9CC4AEA4918D}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>MyCloudMusic</RootNamespace>
     <AssemblyName>MyCloudMusic</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
@@ -41,29 +41,29 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ID3">
-      <HintPath>..\..\..\Downloads\Compressed\ID3\ID3.dll</HintPath>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.Shell32">
-      <HintPath>..\..\..\..\..\..\..\..\..\Desktop\TestListDemo(1)\TestListDemo\TestListDemo\obj\Debug\Interop.Shell32.dll</HintPath>
-      <EmbedInteropTypes>False</EmbedInteropTypes>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
     </Reference>
-    <Reference Include="LanguageExt.Core, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\LanguageExt.Core.3.3.29\lib\net46\LanguageExt.Core.dll</HintPath>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="policy.2.0.taglib-sharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
-      <HintPath>..\packages\taglib.2.1.0.0\lib\policy.2.0.taglib-sharp.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
-    </Reference>
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -72,9 +72,6 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
-    </Reference>
-    <Reference Include="taglib-sharp, Version=2.1.0.0, Culture=neutral, PublicKeyToken=db62eba44689b5b0, processorArchitecture=MSIL">
-      <HintPath>..\packages\taglib.2.1.0.0\lib\taglib-sharp.dll</HintPath>
     </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
@@ -88,64 +85,32 @@
     <Compile Include="CloseWindow.xaml.cs">
       <DependentUpon>CloseWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="CopyRightWindow.xaml.cs">
-      <DependentUpon>CopyRightWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Models\JsonFoundMvObject.cs" />
-    <Compile Include="Models\JsonFoundSongsObject.cs" />
     <Compile Include="Models\JsonLoginObject.cs" />
+    <Compile Include="Utils\HttpRequestHelper.cs" />
     <Compile Include="LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\JsonMvUrlInfoObject.cs" />
-    <Compile Include="Models\JsonRecommendListObject.cs" />
-    <Compile Include="Models\JsonRecommendMVObject.cs" />
-    <Compile Include="Models\JsonSongDetailsInfoObject.cs" />
-    <Compile Include="Models\JsonSongInfoObject.cs" />
-    <Compile Include="Models\JsonSongsListObject.cs" />
-    <Compile Include="Models\JsonSongUrlInfoObject.cs" />
-    <Compile Include="Models\JsonUserSongsListObject.cs" />
-    <Compile Include="Models\MusicInfoModel.cs" />
-    <Compile Include="Utils\Music_Num.cs" />
-    <Compile Include="Models\MvInfoModel.cs" />
     <Compile Include="Models\SongModel.cs" />
-    <Compile Include="Models\SongsListModel.cs" />
     <Compile Include="Models\UserModel.cs" />
-    <Compile Include="Utils\HttpUtils.cs" />
-    <Compile Include="Utils\LoginUtils.cs" />
-    <Compile Include="Utils\MusicPlayer.cs" />
-    <Compile Include="Views\PageFindSongs.xaml.cs">
-      <DependentUpon>PageFindSongs.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PageFoundSongs.xaml.cs">
-      <DependentUpon>PageFoundSongs.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\SongViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="Views\PageLocalSongs.xaml.cs">
       <DependentUpon>PageLocalSongs.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PageFindMvs.xaml.cs">
-      <DependentUpon>PageFindMvs.xaml</DependentUpon>
+    <Compile Include="Views\PageManageSongs.xaml.cs">
+      <DependentUpon>PageManageSongs.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\PageSongsList.xaml.cs">
-      <DependentUpon>PageSongsList.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\PageVideoInfo.xaml.cs">
-      <DependentUpon>PageVideoInfo.xaml</DependentUpon>
-    </Compile>
     <Page Include="CloseWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="CopyRightWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -155,51 +120,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Styles\SkinStyle_Black.xaml">
+    <Page Include="Styles\ControlBtnBaseStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Styles\SkinStyle_Blue.xaml">
+    <Page Include="Styles\WindowShadeStyle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Styles\SkinStyle_Gold.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Styles\SkinStyle_Green.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Styles\SkinStyle_Pink.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Styles\SkinStyle_Red.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PageFindSongs.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PageFoundSongs.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\PageLocalSongs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PageFindMvs.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PageSongsList.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\PageVideoInfo.xaml">
+    <Page Include="Views\PageManageSongs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -235,6 +168,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Images\logo.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -263,40 +199,6 @@
   <ItemGroup>
     <Resource Include="Images\slider_thumb.png" />
   </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\skin_black.png" />
-    <Resource Include="Images\skin_blue.png" />
-    <Resource Include="Images\skin_gold.png" />
-    <Resource Include="Images\skin_green.png" />
-    <Resource Include="Images\skin_pink.png" />
-    <Resource Include="Images\skin_red.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="stdole">
-      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>2</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\play_state_0.png" />
-    <Resource Include="Images\play_state_1.png" />
-    <Resource Include="Images\play_state_2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Images\logo_black.png" />
-    <Resource Include="Images\logo_blue.png" />
-    <Resource Include="Images\logo_gold.png" />
-    <Resource Include="Images\logo_green.png" />
-    <Resource Include="Images\logo_pink.png" />
-    <Resource Include="Images\logo_red.png" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

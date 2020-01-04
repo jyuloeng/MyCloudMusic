@@ -1,0 +1,119 @@
+﻿<Window x:Class="MyCloudMusic.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyCloudMusic"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="530" Width="350" WindowStyle="None" AllowsTransparency="False" ShowInTaskbar="False" Background="#fafafa" WindowStartupLocation="CenterScreen" Topmost="True">
+
+    <Window.Resources>
+        <!--登陆按钮样式-->
+        <Style x:Key="LoginBtnStyle" TargetType="Button">
+            <Setter Property="Width" Value="260"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="#ea4848"/>
+            <Setter Property="Margin" Value="0,40,0,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="grid" Width="Auto">
+                            <Border x:Name="Border" Width="Auto" CornerRadius="6" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="0"/>
+                            <ContentPresenter Margin="{TemplateBinding Padding}"  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" x:Name="ContentPresenter" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"  RecognizesAccessKey="True" />
+                        </Grid>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="#c72e2e"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--文本框样式-->
+        <Style x:Key="LoginTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="MaxWidth" Value="200"/>
+            <Setter Property="Height" Value="39" />
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="#a9a9a9"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            
+        </Style>
+        <Style x:Key="LoginPasswordTextBoxStyle" TargetType="TextBox" x:Name="PasswoedStyle">
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="MaxWidth" Value="200"/>
+            <Setter Property="Height" Value="39" />
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="#a9a9a9"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="TextDecorations">
+                <Setter.Value>
+                    <TextDecorationCollection>
+                        <TextDecoration>
+                            <TextDecoration.Pen>
+                                <Pen Thickness="10" Brush="Black"   EndLineCap="Round" StartLineCap="Round"     DashCap="Round"  >
+                                    <Pen.DashStyle>
+                                        <DashStyle Dashes="0.0,1.2" Offset="0.6"/>
+                                    </Pen.DashStyle>
+                                </Pen>
+                            </TextDecoration.Pen>
+                            <TextDecoration.Location>
+                                <TextDecorationLocation>Strikethrough</TextDecorationLocation>
+                            </TextDecoration.Location>
+                        </TextDecoration>
+                    </TextDecorationCollection>
+                </Setter.Value>
+
+
+            </Setter>
+
+            <Setter Property="Foreground" Value="Transparent"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="FontFamily" Value="Courier New"></Setter>
+
+
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition  Height="36" />
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        
+        <!--第一行-->
+        <Grid>
+            <StackPanel Orientation="Horizontal">
+                <Button Click="closeLoginWindowEvent" Content="&#xe505;" Foreground="#666666" Style="{DynamicResource ControlBtnBaseStyle}" Width="18" Height="17" FontSize="15" Margin="309,4,0,0" />
+            </StackPanel>
+        </Grid>
+        
+        <!--第二行-->
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Vertical">
+                <Image Source="Images/login_bg.png" Width="261" Height="162"/>
+                <Border BorderThickness="2" BorderBrush="#e5e5e5"  Width="260">
+                    <StackPanel Orientation="Horizontal" Background="White">
+                        <Image Source="Images/username.png" Width="17" Height="17" Stretch="Fill" Margin="10,0,0,0"/>
+                        <TextBox x:Name="phoneText"  Text="请输入手机号或邮箱"  Style="{StaticResource LoginTextBoxStyle}"  Margin="7,0,0,0" Width="221" GotFocus="User"/>
+                    </StackPanel>
+                </Border>
+                <Border BorderThickness="2,0,2,2" BorderBrush="#e5e5e5" Width="260">
+                    <StackPanel Orientation="Horizontal" Background="White" >
+                        <Image Source="Images/password.png" Width="15" Height="15" Stretch="Fill" Margin="10,0,0,0"/>
+                        <TextBox x:Name="passwordText"  Text="请输入密码" Style="{StaticResource LoginTextBoxStyle}" Margin="7,0,0,0" Width="223" GotFocus="Userpassword"/>
+                    </StackPanel>
+                </Border>
+                <Button x:Name="loginBtn" Content="登陆" Style="{DynamicResource LoginBtnStyle}" Click="Login"/>
+                <Button Content="注册" Style="{DynamicResource LoginBtnStyle}" Margin="0,20,0,0"/>
+            </StackPanel>
+        </Grid>
+        
+    </Grid>
+</Window>

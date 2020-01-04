@@ -1,0 +1,150 @@
+﻿<Page x:Class="MyCloudMusic.Views.PageManageSongs"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageLocalSongs" Width="823" Height="572">
+
+    <Page.Resources>
+        <Style x:Key="TypeTitleTextStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="#666666"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="TypeTextStyle" TargetType="RadioButton">
+            <Setter Property="Foreground" Value="#666666"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="3,0"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <StackPanel Orientation="Horizontal">
+                            <Border x:Name="bd2"/>
+                            <ContentPresenter x:Name="contentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}"
+                                              Content="{TemplateBinding Content}" Grid.Column="1" 
+                                              ContentStringFormat="{TemplateBinding ContentStringFormat}" Focusable="False" 
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                              Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="FontSize" Value="16"/>
+                                <Setter Property="Foreground" Value="#c62f2f"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#fafafa">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Margin="0,15,0,0">
+            <Border BorderBrush="#FFE1E1E2" BorderThickness="0,3" Width="750">
+                <StackPanel Width="750" Orientation="Vertical">
+                    <StackPanel Orientation="Horizontal" Height="30" Margin="0,5,0,0">
+                        <TextBlock Text="地区：" Style="{DynamicResource TypeTitleTextStyle}"/>
+                        <RadioButton GroupName="Group1" x:Name="RBtn_QuanBuDiQu" Content="全部" Style="{DynamicResource TypeTextStyle}" />
+                        <TextBlock Text="|"  Style="{DynamicResource TypeTitleTextStyle}"/>
+                        <RadioButton GroupName="Group1" x:Name="RBtn_NeiDi" Content="内地" Style="{DynamicResource TypeTextStyle}"/>
+                        <TextBlock Text="|"  Style="{DynamicResource TypeTitleTextStyle}"/>
+                        <RadioButton GroupName="Group1" x:Name="RBtn_GangTai" Content="港台" Style="{DynamicResource TypeTextStyle}"/>
+                        <TextBlock Text="|"  Style="{DynamicResource TypeTitleTextStyle}"/>
+                        <RadioButton GroupName="Group1" x:Name="RBtn_OuMei" Content="欧美" Style="{DynamicResource TypeTextStyle}"/>
+                        <TextBlock Text="|"  Style="{DynamicResource TypeTitleTextStyle}"/>
+                        <RadioButton GroupName="Group1" x:Name="RBtn_HanGuo" Content="韩国" Style="{DynamicResource TypeTextStyle}"/>
+                        <TextBlock Text="|" Style="{DynamicResource TypeTitleTextStyle}"/>
+                        <RadioButton GroupName="Group1" x:Name="RBtn_RiBen" Content="日本" Style="{DynamicResource TypeTextStyle}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="30">
+                        <TextBlock Text="类型：" Style="{DynamicResource TypeTitleTextStyle}"/>
+                        <RadioButton GroupName="Group2" x:Name="RBtn_QuanBuNeiXing" Content="全部"  Style="{DynamicResource TypeTextStyle}" />
+                        <TextBlock Text="|"  Style="{DynamicResource TypeTitleTextStyle}"/>
+                        <RadioButton GroupName="Group2" x:Name="RBtn_GuanFang" Content="官方版" Style="{DynamicResource TypeTextStyle}"/>
+                        <TextBlock Text="|"  Style="{DynamicResource TypeTitleTextStyle}"/>
+                        <RadioButton GroupName="Group2" x:Name="RBtn_YuanSheng" Content="原声" Style="{DynamicResource TypeTextStyle}"/>
+                        <TextBlock Text="|"  Style="{DynamicResource TypeTitleTextStyle}"/>
+                        <RadioButton GroupName="Group2" x:Name="RBtn_Live" Content="现场版" Style="{DynamicResource TypeTextStyle}"/>
+                        <TextBlock Text="|"  Style="{DynamicResource TypeTitleTextStyle}"/>
+                        <RadioButton GroupName="Group2" x:Name="RBtn_WangYi" Content="网易出品" Style="{DynamicResource TypeTextStyle}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Height="30">
+                        <TextBlock Text="排序：" Style="{DynamicResource TypeTitleTextStyle}"/>
+                        <RadioButton GroupName="Group3" x:Name="RBtn_ShangSheng" Content="上升最快"  Style="{DynamicResource TypeTextStyle}" />
+                        <TextBlock Text="|"  Style="{DynamicResource TypeTitleTextStyle}"/>
+                        <RadioButton GroupName="Group3" x:Name="RBtn_ZuiRe" Content="最热" Style="{DynamicResource TypeTextStyle}"/>
+                        <TextBlock Text="|"  Style="{DynamicResource TypeTitleTextStyle}"/>
+                        <RadioButton GroupName="Group3" x:Name="RBtn_ZuiXing" Content="最新" Style="{DynamicResource TypeTextStyle}"/>
+
+                        <Button x:Name="Btn_ChangeMv" Content="&#xe626; 换一批瞧瞧" Style="{DynamicResource AddSongsBtnStyle}" Margin="470,1,0,0" VerticalAlignment="Center" Click="Btn_ChangeMv_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Vertical">
+
+                <StackPanel Orientation="Horizontal">
+
+                    <StackPanel x:Name="mvStackPanel1" Orientation="Vertical" Margin="22,32,0,0" Cursor="Hand" MouseDown="ToSelectMV1">
+                        <Image  Source="{Binding MvImgUrl}" Height="139" Width="246"/>
+                        <TextBlock Text="{Binding MvName}" Width="246" FontSize="14"/>
+                        <TextBlock Text="{Binding MvArtist}" Width="246" FontSize="14"/>
+                    </StackPanel>
+
+                    <StackPanel x:Name="mvStackPanel2" Orientation="Vertical" Margin="20,32,0,0" Cursor="Hand" MouseDown="ToSelectMV2">
+                        <Image  Source="{Binding MvImgUrl}" Height="139" Width="246"/>
+                        <TextBlock Text="{Binding MvName}" Width="246" FontSize="14"/>
+                        <TextBlock Text="{Binding MvArtist}" Width="246" FontSize="14"/>
+                    </StackPanel>
+
+                    <StackPanel x:Name="mvStackPanel3" Orientation="Vertical" Margin="20,32,0,0" Cursor="Hand" MouseDown="ToSelectMV3">
+                        <Image  Source="{Binding MvImgUrl}" Height="139" Width="246"/>
+                        <TextBlock Text="{Binding MvName}" Width="246" FontSize="14"/>
+                        <TextBlock Text="{Binding MvArtist}" Width="246" FontSize="14"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal">
+
+                    <StackPanel x:Name="mvStackPanel4" Orientation="Vertical" Margin="22,32,0,0" Cursor="Hand" MouseDown="ToSelectMV4">
+                        <Image  Source="{Binding MvImgUrl}" Height="139" Width="246"/>
+                        <TextBlock Text="{Binding MvName}" Width="246" FontSize="14"/>
+                        <TextBlock Text="{Binding MvArtist}" Width="246" FontSize="14"/>
+                    </StackPanel>
+
+                    <StackPanel x:Name="mvStackPanel5" Orientation="Vertical" Margin="20,32,0,0" Cursor="Hand" MouseDown="ToSelectMV5">
+                        <Image  Source="{Binding MvImgUrl}" Height="139" Width="246"/>
+                        <TextBlock Text="{Binding MvName}" Width="246" FontSize="14"/>
+                        <TextBlock Text="{Binding MvArtist}" Width="246" FontSize="14"/>
+                    </StackPanel>
+
+                    <StackPanel x:Name="mvStackPanel6" Orientation="Vertical" Margin="20,32,0,0" Cursor="Hand" MouseDown="ToSelectMV6">
+                        <Image  Source="{Binding MvImgUrl}" Height="139" Width="246"/>
+                        <TextBlock Text="{Binding MvName}" Width="246" FontSize="14"/>
+                        <TextBlock Text="{Binding MvArtist}" Width="246" FontSize="14"/>
+                    </StackPanel>
+                </StackPanel>
+                
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

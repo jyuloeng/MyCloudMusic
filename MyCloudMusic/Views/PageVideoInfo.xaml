@@ -1,0 +1,115 @@
+﻿<Page x:Class="MyCloudMusic.Views.PageVideoInfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MyCloudMusic.Views"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" Width="823" Height="572"
+      Title="PageVideoInfo">
+
+    <Page.Resources>
+        <Style x:Key="PlayBtnsStyle" TargetType="Button">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid x:Name="grid">
+                            <ContentPresenter Name="GelButtonContent" VerticalAlignment="Center" HorizontalAlignment="Center"
+                                          Content="{TemplateBinding Content}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Background" Value="#c72e2e"/>
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+        <Style x:Key="PlaySlider_Thumb" TargetType="Thumb">
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Image Source="/Images/slider_thumb.png" Width="15" Height="15" />
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="PlaySliderStyle" TargetType="Slider">
+            <Setter Property="Focusable" Value="False"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Slider">
+                        <Grid x:Name="grid">
+                            <Track x:Name="PART_Track" Grid.Row="1">
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton Height="5" Background="#e83c3c" Command="{x:Static Slider.DecreaseLarge}" BorderBrush="#e83c3c" />
+                                </Track.DecreaseRepeatButton>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton Height="5" Background="#FF666666" Command="{x:Static Slider.IncreaseLarge}" BorderBrush="#FF666666"/>
+                                </Track.IncreaseRepeatButton>
+                                <Track.Thumb>
+                                    <Thumb Style="{StaticResource PlaySlider_Thumb}"/>
+                                </Track.Thumb>
+                            </Track>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+    </Page.Resources>
+    
+    <Grid Background="#fafafa">
+        <StackPanel Orientation="Vertical">
+            <!--第一行-->
+            <StackPanel Orientation="Horizontal" Height="50" Margin="0,3,0,0">
+                <Border BorderBrush="#e03f40" BorderThickness="1" CornerRadius="2" Width="38" Height="20" Margin="35
+                        ,5,0,0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <TextBlock Text="MV" Foreground="#e03f40" FontSize="12" Margin="8,1,0,0"/>
+                </Border>
+                <TextBlock Text="{Binding MvName}"  VerticalAlignment="Center" FontSize="22" Foreground="#FF595757" Margin="10,4,0,0"/>
+                <TextBlock Text="{Binding MvArtist}" VerticalAlignment="Center" Foreground="#FF636060" FontSize="15" Margin="10,5,0,0"/>
+            </StackPanel>
+            <!--第二行-->
+            <StackPanel Orientation="Horizontal" Height="26">
+                <TextBlock Text="播放次数：" FontSize="13" Foreground="#FF636060" Margin="35
+                           ,0,0,0"/>
+                <TextBlock Text="{Binding MvPlayCount}" HorizontalAlignment="Right" FontSize="13" Foreground="#FF636060" Margin="10,0,0,0"/>
+            </StackPanel>
+            <!--第三行-->
+            <StackPanel Orientation="Vertical"  HorizontalAlignment="Left" Margin="35,0,0,0" Background="#FF212121" Height="472">
+                
+                <MediaElement x:Name="player" Height="431.25" Width="690" LoadedBehavior="Manual"/>
+                
+                <Slider x:Name="PositionSlider" Style="{DynamicResource PlaySliderStyle}" Margin="0,-6,0,0" ValueChanged="changePosition"/>
+                
+                <StackPanel Orientation="Horizontal" Width="690" Height="25">
+                    <Border x:Name="BtnPlaySongs_Bg" BorderThickness="1" CornerRadius="50" Height="25" Width="25" Background="#FF212121" Margin="13,0,0,0" BorderBrush="White">
+                        <Button x:Name="Btn_PlayVideo" Style="{DynamicResource PlayBtnsStyle}"  Width="23" Height="23" Margin="0" Click="Btn_PlayVideo_Click" >
+                            <Image x:Name="Image_Btn_PlayVideo" Width="13" Margin="0" Source="/MyCloudMusic;component/Images/play.png"/>
+                        </Button>
+                    </Border>
+                    <TextBlock x:Name="sliderValueText" FontSize="15" Text="00:00" Foreground="White" VerticalAlignment="Center" Margin="30,0,0,0"/>
+                    <TextBlock FontSize="15" Text="/" Foreground="White" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    <TextBlock x:Name="totalTimeText" FontSize="15" Text="00:00" Foreground="White" VerticalAlignment="Center" Margin="5,0,0,0"/>
+                    <TextBlock FontSize="15" Text="&#xe662;" FontFamily="/MyCloudMusic;component/Fonts/#iconfont" Foreground="#FFE0DADA" VerticalAlignment="Center" Margin="390,0,0,0"/>
+
+                    <Slider x:Name="VolumeSlider" Style="{DynamicResource PlaySliderStyle}" Margin="5,0,0,0" Width="100" Foreground="#FFE2E2E2" ValueChanged="changeVolume" Maximum="1" Value="0.5"/>
+                </StackPanel>
+            </StackPanel>
+            
+        </StackPanel>
+    </Grid>
+</Page>

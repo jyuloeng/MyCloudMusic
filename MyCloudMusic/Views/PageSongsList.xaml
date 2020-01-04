@@ -1,0 +1,180 @@
+﻿<Page x:Class="MyCloudMusic.Views.PageSongsList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MyCloudMusic.Views"
+      xmlns:local1="clr-namespace:TestListDemo"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageSongsList" Width="823" Height="572">
+
+    <Page.Resources>
+        <local1:MusicInfoModel x:Key="SongsList"/>
+        <Style x:Key="BaseTextStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Foreground" Value="#999999"/>
+        </Style>
+        
+        <Style x:Key="ListBoxItemStyle" TargetType="ListBoxItem">
+            <Setter Property="Background" Value="#f5f5f7"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                        <Border Name="Border" SnapsToDevicePixels="true">
+                            <ContentPresenter />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsSelected" Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="#e3e3e5"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="Border" Property="Background" Value="#e3e3e5"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Key="ListBoxDataStyle">
+            <StackPanel Orientation="Horizontal" Width="822" Height="30">
+                <TextBlock Text="{Binding Path=MusicId}" Style="{DynamicResource ItemTitleStyle}" Margin="30,0,0,0" Padding="0"/>
+                <TextBlock Text="{Binding Path=MusicName}" Style="{DynamicResource ItemTitleStyle}" Margin="2,0,0,0" Width="248"/>
+                <TextBlock Text="{Binding Path=MusicArtists}" Style="{DynamicResource ItemTitleStyle}" Width="180"/>
+                <TextBlock Text="{Binding Path=MusicAlbum}" Style="{DynamicResource ItemTitleStyle}" Width="155"/>
+                <TextBlock Text="{Binding Path=MusicDuration}" Style="{DynamicResource ItemTitleStyle}" Width="155"/>
+            </StackPanel>
+            <DataTemplate.Triggers>
+                <DataTrigger>
+
+                </DataTrigger>
+            </DataTemplate.Triggers>
+
+        </DataTemplate>
+        <Style x:Key="ItemTitleStyle" TargetType="TextBlock">
+            <Setter Property="Height" Value="15"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Foreground" Value="#666666"/>
+            <Setter Property="Padding" Value="10,0,0,0"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Background="#fafafa">
+        <!--一共分四行-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="260"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--第一行又分两列-->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="230"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <!--第一行第一列-->
+            <Grid>
+                <StackPanel Width="200" Height="200" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,0,30">
+                    <Image Source="{Binding SongsListUrl}" />
+                </StackPanel>
+            </Grid>
+
+            <!--第一行第二列又分三行-->
+            <Grid Grid.Column="1" Height="230" VerticalAlignment="Bottom">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="45"/>
+                    <RowDefinition Height="260"/>
+                </Grid.RowDefinitions>
+
+                <!--第一行第二列第一行-->
+                <Grid>
+                    <StackPanel Orientation="Horizontal">
+                        <Border BorderBrush="#e03f40" BorderThickness="1" CornerRadius="2" Width="38" Height="20" Margin="30,5,0,0">
+                            <TextBlock Text="歌单" Foreground="#e03f40" FontSize="12" Margin="6,1,0,0"/>
+                        </Border>
+                        <TextBlock x:Name="SongsListNameText" Text="{Binding SongsListName}" FontSize="22" Margin="5,5,0,0" MaxWidth="200" MinWidth="500"/>
+
+                        
+                    </StackPanel>
+                </Grid>
+
+                <!--第一行第二列第二行-->
+                <Grid Grid.Row="1">
+                    <StackPanel Orientation="Horizontal">
+                        <Ellipse  Width="30" Height="30" Margin="30,0,0,0" >
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="{Binding SongsListAvatarUrl}"/>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <TextBlock Text="{Binding Nickname}" FontSize="14" Foreground="#666666" Margin="10,0,0,0" MaxWidth="110" MinWidth="110" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding SongsListCreateTime}" Style="{DynamicResource BaseTextStyle}" Margin="0" MaxWidth="75" VerticalAlignment="Center" FontSize="14"/>
+                        <TextBlock Text="创建" Style="{DynamicResource BaseTextStyle}" Margin="10,0,0,0" VerticalAlignment="Center" FontSize="14"/>
+                    </StackPanel>
+                </Grid>
+
+                <!--第一行第二列第三行-->
+                <Grid Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <StackPanel Orientation="Vertical">
+                        <Button Content="添加全部" Style="{DynamicResource PlagAllBtnStyle}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="30,10,15,0" Click="Button_Click"/>
+                        <StackPanel Orientation="Vertical" Margin="400,37,0,0">
+                            <StackPanel Orientation="Horizontal" Height="25">
+                                <TextBlock Text="歌曲数：" Style="{DynamicResource BaseTextStyle}" Margin="0" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="SongsListCountText" Text="{Binding SongsListCount}" Style="{DynamicResource BaseTextStyle}" Margin="0" MaxWidth="40" MinWidth="60" HorizontalAlignment="Left" VerticalAlignment="Center" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Height="25">
+                                <TextBlock Text="播放数：" Style="{DynamicResource BaseTextStyle}" Margin="0" VerticalAlignment="Center"/>
+                            <TextBlock x:Name="SongsListPlayCountText" Text="{Binding SongsListPlayCount}" Style="{DynamicResource BaseTextStyle}" Margin="0" MaxWidth="60" MinWidth="60" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                            </StackPanel>
+
+                            
+                        </StackPanel>
+                    </StackPanel>
+                    
+                    
+                </Grid>
+            </Grid>
+        </Grid>
+
+        <!--第二行-->
+        <Grid Grid.Row="1">
+            <Border BorderBrush="#e03f40" BorderThickness="0,0,0,4" Width="64" HorizontalAlignment="Left" Margin="70,0,0,0" >
+                <TextBlock Text="歌曲列表" FontSize="16" Foreground="#e03f40" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,7,0,0" />
+            </Border>
+            <Border Background="White" Margin="600,0,0,0" BorderBrush="#e1e1e2"
+                              Width="170" Height="25"  BorderThickness="1" CornerRadius="10">
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" >
+                    <TextBox Text="搜索已下载音乐" FontSize="12" Margin="10,0,0,0" Background="Transparent"
+                                   Foreground="#999999" Width="70" Height="15" BorderThickness="0" MinWidth="160" />
+                    <Button Content="&#xe65f;" Style="{StaticResource ControlBtnBaseStyle}" Margin="-30,0,0,0" Foreground="#999999"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!--第三行-->
+        <Grid Grid.Row="2">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="音乐标题" Style="{DynamicResource ItemTitleStyle}" Margin="70,0,0,0" Width="220"/>
+                <TextBlock Text="歌手"  Style="{DynamicResource ItemTitleStyle}" Width="180"/>
+                <TextBlock Text="专辑"  Style="{DynamicResource ItemTitleStyle}" Width="155"/>
+                <TextBlock Text="时长"  Style="{DynamicResource ItemTitleStyle}" Width="85"/>
+            </StackPanel>
+        </Grid>
+
+        <!--第四行-->
+        <Grid Grid.Row="3">
+            <StackPanel Orientation="Vertical">
+                <ListBox x:Name="mListBox" HorizontalAlignment="Left" Height="430" 
+                ItemContainerStyle="{DynamicResource ListBoxItemStyle}"
+                ItemsSource="{Binding Source={StaticResource SongsList}}" 
+                ItemTemplate="{StaticResource ListBoxDataStyle}" 
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                Margin="0,0,0,0" VerticalAlignment="Top" Width="822" Grid.ColumnSpan="2" MouseDoubleClick="MListBox_MouseDoubleClick" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
