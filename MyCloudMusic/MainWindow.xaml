@@ -1,0 +1,64 @@
+﻿<Window x:Class="MyCloudMusic.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyCloudMusic"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="670" Width="1022" WindowStyle="None" AllowsTransparency="True" WindowStartupLocation="CenterScreen" >
+
+    <Grid>
+        <!--分成三行-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!--第一行分两列-->
+        <Grid Background="#FFC62F2F">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid>
+                <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal">
+                <Image Width="133" Height="22" Source="Images/logo.png" 
+                        HorizontalAlignment="Left" VerticalAlignment="Center" Margin="16,0,0,0" />
+                <Border Background="#FFA82828" Margin="65,0,0,0"  VerticalAlignment="Center" 
+                              Width="220" Height="22"  BorderThickness="0" CornerRadius="10">
+                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Width="220" Height="22">
+                        <TextBlock Text="搜索音乐，视频，歌词，电台" FontSize="12" TextAlignment="Center" Margin="10,0,0,0"
+                                   Foreground="#FFC77373" VerticalAlignment="Center" Width="156" Height="15" HorizontalAlignment="Left"/>
+                            <TextBlock Text="&#xe65f;" Width="15" Height="15" Margin="32,0,0,0" FontFamily="./Fonts/#iconfont"
+                                   Foreground="#FFC77373" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                </StackPanel>
+                </Border>
+            </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="2" HorizontalAlignment="Right">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <StackPanel Orientation="Horizontal" Height="25" Width="130" Margin="0,0,18,0">
+                        <Ellipse Width="25" Height="25" >
+                            <Ellipse.Fill>
+                                <ImageBrush ImageSource="Images/logo.jpg"></ImageBrush>
+                            </Ellipse.Fill>
+                        </Ellipse>
+                        <TextBlock Text="odd" FontSize="12" Foreground="#FFC77373" Margin="7,0,0,0" VerticalAlignment="Center" MaxWidth="80" TextTrimming="CharacterEllipsis" Width="80"/>
+                        <TextBlock Text="&#xe602;" FontSize="12"  Foreground="#FFeec1c1"  VerticalAlignment="Center" Margin="3,2,0,0"  FontFamily="./Fonts/#iconfont"/>
+                    </StackPanel>
+                    <Button Content="&#xe64f;" Width="15" Height="16" Foreground="#FFeec1c1" Background="Transparent" BorderThickness="0" Margin="0,0,18,0" FontSize="13" FontFamily="./Fonts/#iconfont"/>
+                    <Button Content="&#xe60e;" Width="15" Height="16" Foreground="#FFeec1c1" Background="Transparent" BorderThickness="0" Margin="0,0,18,0" FontSize="13" FontFamily="./Fonts/#iconfont"/>
+                    <TextBlock Text="|" Width="15" Height="20" FontSize="15" Foreground="#FFA82828" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <Button Content="&#xe60c;" Width="15" Height="16" Foreground="#FFeec1c1" Background="Transparent" BorderThickness="0" Margin="0,0,18,0" FontSize="15" FontFamily="./Fonts/#iconfont"/>
+                    <Button Content="&#xe505;" Width="15" Height="16" Foreground="#FFeec1c1" Background="Transparent" BorderThickness="0" Margin="0,0,18,0" FontSize="15" FontFamily="./Fonts/#iconfont"/>
+                </StackPanel>
+            </Grid>
+
+            
+            
+        </Grid>
+    </Grid>
+</Window>
